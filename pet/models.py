@@ -4,17 +4,17 @@ from django.db import models
 class Group(models.Model):
     name = models.CharField(max_length=255)
     scientific_name = models.CharField(max_length=255)
-
+    
     # testar
     def __str__(self):
         return f"{self.name} - {self.scientific_name}"
 
-class Characteristic(models.Model):
+class Characteristics(models.Model):
     name = models.CharField(max_length=255)
-
-    # testar
     def __str__(self):
         return f"{self.name}"
+    # testar
+
 
 class Animal(models.Model):
     name = models.CharField(max_length=255)
@@ -22,7 +22,8 @@ class Animal(models.Model):
     weight = models.FloatField()
     sex = models.CharField(max_length=1)
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
-    Characteristic = models.ManyToManyField(Characteristic)
+    characteristics = models.ManyToManyField(Characteristics)
+
 
     def __str__(self):
         return f"{self.name} - {self.age} - {self.weight} - {self.sex}"
