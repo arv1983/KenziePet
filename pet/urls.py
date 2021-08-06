@@ -2,6 +2,6 @@ from django.urls import path
 from .views import GroupView
 
 urlpatterns = [
-    path('group/', GroupView.as_view())
-    
+    path('animals/', GroupView.as_view()),
+    path('animals/<int:animal_id>/', GroupView.as_view())
 ]
