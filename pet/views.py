@@ -12,16 +12,25 @@ from rest_framework import status, serializers
 class GroupView(APIView):
     def get(self, request, animal_id=''):
         if animal_id:
-            animal = Animal.objects.filter(id=animal_id)
-            if not animal:
-                return Response(status=status.HTTP_404_NOT_FOUND)
+
+            
+            try:                
+                animal = Animal.objects.get(id=animal_id)
+                serializer = AnimalSerializers(animal)
+                return Response(serializer.data, status=200)
+                
+
+            except:
+                return Response({"Erro": "Invalid animal_id"}, status=status.HTTP_404_NOT_FOUND)
+
+
         else:
             animal = Animal.objects.all()
+            serializer = AnimalSerializers(animal, many=True)
+            return Response(serializer.data, status=200)            
         
         
-        serializer = AnimalSerializers(animal, many=True)
-        
-        return Response(serializer.data)
+
 
 
     def post(self, request):

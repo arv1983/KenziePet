@@ -30,17 +30,9 @@ test_create_animal (test_api.TestAnimalView) ... ok
 test_create_two_animals_with_the_same_characteristic (test_api.TestAnimalView) ... ok
 test_create_two_animals_with_the_same_group (test_api.TestAnimalView) ... ok
 test_delete_animal (test_api.TestAnimalView) ... ok
-test_filter_animals (test_api.TestAnimalView) ... FAIL
+test_filter_animals (test_api.TestAnimalView) ... ok
 test_get_two_animals_alike (test_api.TestAnimalView) ... FAIL
 test_list_animals (test_api.TestAnimalView) ... ok
-
-======================================================================
-FAIL: test_filter_animals (test_api.TestAnimalView)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/anderson/Área de Trabalho/Q4/kenziepet/test_api.py", line 110, in test_filter_animals
-    self.assertDictContainsSubset({"id": 1}, get_response.json())
-AssertionError: Missing: 'id'
 
 ======================================================================
 FAIL: test_get_two_animals_alike (test_api.TestAnimalView)
@@ -51,7 +43,7 @@ Traceback (most recent call last):
 AssertionError: 1 != 2
 
 ----------------------------------------------------------------------
-Ran 7 tests in 0.124s
+Ran 7 tests in 0.132s
 
-FAILED (failures=2)
+FAILED (failures=1)
 Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
